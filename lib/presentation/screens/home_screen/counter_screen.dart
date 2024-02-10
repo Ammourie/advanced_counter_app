@@ -133,16 +133,22 @@ class CounterValue extends StatefulWidget {
 }
 
 class _CounterValueState extends State<CounterValue> {
-  late AnimationController _animationController;
+  AnimationController? _animationController;
+  @override
+  void initState() {
+    // _animationController = AnimationController(vsync: this);
+    super.initState();
+  }
+
   @override
   void dispose() {
-    _animationController.dispose();
+    _animationController?.dispose();
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    _animationController.forward(from: 0.0);
+    _animationController?.forward(from: 0.0);
     return ZoomIn(
       duration: Durations.long4,
       controller: (p0) => _animationController = p0,
